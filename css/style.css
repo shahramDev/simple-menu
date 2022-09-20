@@ -1,0 +1,123 @@
+* {
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    margin: 0;
+    background-image: linear-gradient(62deg, #3a3d40 0%, #181719 100%);
+    width: 100vw;
+    height: 100vh;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+header {
+    position: fixed;
+    width: 100vw;
+    background-color: #BE3144;
+}
+.list {
+    margin: 0 15px 0 0;
+    display: flex;
+    justify-content: flex-end;
+}
+.list li a {
+    display: block;
+    padding: 15px;
+    color: #DDDFE3;
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+.list li a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.hamburger-menu-container {
+    position: fixed;
+    padding: 10px 15px;
+    width: auto;
+    height: auto;
+    z-index: 5;
+}
+.hamburger-menu { /*label*/
+    display: none;
+    flex-direction: column;
+    background-color: #C3414E;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.hamburger-menu-container ul {
+    display: none;
+    position: absolute;
+}
+#hamburger-menu { /*input*/
+    display: none;
+}
+.hamburger-menu span {
+    display: inline-block;
+    width: 30px;
+    height: 5px;
+    border-radius: 5px;
+    background-color: #DDDFE3;
+    margin: 2px;
+}
+.hamburger-menu span:not(:nth-child(2)) , .hamburger-menu-container {
+    transition: all ease 0.5s;
+}
+
+/* start media query */
+/* mobile */
+@media screen and (max-width: 480px) {
+    * {
+        font-size: 12px;
+    }
+    .hamburger-menu {
+        display: flex;
+        padding: 3px;
+    }
+    .hamburger-menu span {
+        height: 3px;
+        width: 18px;
+    }
+    #hamburger-menu:checked ~ .hamburger-menu-container .hamburger-menu span:nth-child(1) {
+        background-color: #000;
+        transform: translateY(7px) rotateZ(45deg);
+    }
+    #hamburger-menu:checked ~ .hamburger-menu-container .hamburger-menu span:nth-child(2) {
+        background-color: #000;
+        transform: scaleY(0);
+    }
+    #hamburger-menu:checked ~ .hamburger-menu-container .hamburger-menu span:nth-child(3) {
+        background-color: #000;
+        transform: translateY(-7px) rotateZ(-45deg);
+    }
+    #hamburger-menu:checked ~ .hamburger-menu-container {
+        width: 300px;
+        height: 100vh;
+        background-color: rgba(255, 255, 255, 0.3);
+        overflow: scroll;
+        backdrop-filter: blur(5px);
+    }
+    #hamburger-menu:checked ~ .hamburger-menu-container .hamburger-menu {
+        background-color:  rgba(255, 255, 255, 0.3);;
+        backdrop-filter: blur(5px);
+        float: right;
+        position: fixed;
+        right: 20px;
+    }
+    #hamburger-menu:checked ~ .hamburger-menu-container ul {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin: 40px 0;
+        right: 20.5px;
+    }
+    #hamburger-menu:checked ~ .hamburger-menu-container ul li {
+        width: 270px;
+        padding: 10px 0;
+        font-weight: bolder;
+    }
+}
